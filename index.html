@@ -464,29 +464,110 @@
         </section>
 
         <!-- 6. Contact Section -->
-        <section id="contact" class="section-padding bg-primary-navy">
-            <div class="max-w-xl mx-auto px-4 p-8 bg-secondary-blue wireframe-rounded shadow-2xl text-center">
-                <h2 class="text-4xl font-bold mb-8">Contact Me</h2>
+        
+            <div class="max-w-xl mx-auto px-6 sm:px-8 p-8 bg-secondary-blue wireframe-rounded shadow-2xl text-center">
+                <h2 class="text-4xl font-bold mb-8 text-white">Contact Me</h2>
                 <form class="space-y-6">
                     <!-- Name Input -->
-                    <input type="text" placeholder="Insert text" class="contact-input w-full" aria-label="Your Name">
+                    <input type="text" placeholder="Insert name" class="contact-input w-full" aria-label="Your Name" required>
                     <!-- Email Input -->
-                    <input type="email" placeholder="Insert text" class="contact-input w-full" aria-label="Your Email">
+                    <input type="email" placeholder="Insert gmail" class="contact-input w-full" aria-label="Your Email" required>
                     <!-- Message Textarea -->
-                    <textarea placeholder="Insert text" rows="6" class="contact-input w-full resize-none" aria-label="Your Message"></textarea>
-                    <!-- Send Message Button - FIX: Updated hover color to match the theme (darker secondary blue) -->
+                    <textarea placeholder="Insert Message" rows="6" class="contact-input w-full resize-none" aria-label="Your Message" required></textarea>
+                    <!-- Send Message Button -->
                     <button type="submit" class="w-full py-4 bg-[--accent-cyan] text-black font-bold text-lg rounded-xl shadow-lg hover:bg-[--darker-secondary-blue] hover:text-white transition duration-300 transform hover:scale-[1.01]">
                         Send Message
                     </button>
+                     <!-- Status/Feedback Message -->
+                    <div id="statusMessage" class="mt-4 p-3 rounded-xl hidden text-sm font-medium"></div>
+                </form>
+                <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // 1. Configuration 
+            const recipientEmail = "azularyoko32@gmail.com";
+            
+            // 2. Get Input Values
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const message = document.getElementById('messageInput').value;
+            
+            // 3. Status Message Element
+            const status = document.getElementById('statusMessage');
+
+            if (!recipientEmail || recipientEmail === "azularyoko32@gmail.com") {
+                status.textContent = "ERROR: Please update the Email";
+                status.className = "mt-4 p-3 rounded-xl bg-red-800 text-white block text-sm font-medium";
+                return;
+            }
+
+            // 4. Construct Email Components
+            const subject = encodeURIComponent(`New Message from ${name} via Contact Form`);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n\n` +
+                `Message:\n${message}`
+            );
+
+            // 5. Construct the mailto link
+            const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+
+            // 6. Attempt to open the link
+            try {
+                window.location.href = mailtoLink;
+                
+                status.textContent = "Email client opened! Please check your desktop/mobile mail app and hit 'Send'.";
+                status.className = "mt-4 p-3 rounded-xl bg-green-500 text-white block text-sm font-medium";
+
+                // Clear the form after a successful redirect attempt
+                document.getElementById('contactForm').reset();
+            } catch (error) {
+                // This catch block is mostly for theoretical errors since mailto is a basic protocol
+                status.textContent = "Failed to open email client. Please ensure you have a default mail application set up.";
+                status.className = "mt-4 p-3 rounded-xl bg-red-500 text-white block text-sm font-medium";
+            }
+        });
+    </script>
+                </form>
+
+                <!-- New Contact Details Section based on the image -->
+                <div class="mt-10 pt-6 border-t border-gray-600 space-y-4 text-left text-white">
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Or Connect Directly</h3>
+                    
+                    <!-- Facebook Link -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-3xl" role="img" aria-label="Facebook Icon">📘</span>
+                        <p class="text-lg">Facebook: 
+                            <a href="https://www.facebook.com/ken.piamonte.315" class="text-[--highlight-red] hover:text-white transition duration-150 underline">https://www.facebook.com/ken.piamonte.315</a>
+                        </p>
+                    </div>
+
+                    <!-- Instagram Link -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-3xl" role="img" aria-label="Instagram Icon">📸</span>
+                        <p class="text-lg">Instagram: 
+                            <a href="https://www.instagram.com/carrotdevourer2325?igsh=MTdvdWxoeHR4amJidg==" class="text-[--highlight-red] hover:text-white transition duration-150 underline">https://www.instagram.com/carrotdevourer2325</a>
+                        </p>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="flex items-center space-x-4">
+                        <span class="text-3xl" role="img" aria-label="Phone Icon">📞</span>
+                        <p class="text-lg">Contact Number: 
+                            <span class="text-[--highlight-red]">09993597619</span>
+                        </p>
+                    </button>
                 </form>
             </div>
+            
         </section>
 
     </main>
 
     <!-- Footer -->
     <footer class="bg-primary-navy py-4 text-center text-sm text-gray-400 border-t border-secondary-blue">
-        <p>&copy; 2025 Ken Piamonte. All Rights Reserved. Built with Tailwind CSS.</p>
+       
     </footer>
 
     <!-- JavaScript for Mobile Menu and Smooth Scrolling -->

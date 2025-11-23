@@ -463,23 +463,52 @@
         </section>
 
         <!-- 6. Contact Section -->
-        
+        <section id="contact" class="section-padding">
             <div class="max-w-xl mx-auto px-6 sm:px-8 p-8 bg-secondary-blue wireframe-rounded shadow-2xl text-center">
                 <h2 class="text-4xl font-bold mb-8 text-white">Contact Me</h2>
-                <form class="space-y-6">
-                   
-                    <input type="text" placeholder="Insert name" class="contact-input w-full" aria-label="Your Name" required>
+                
+                <form action="mailto:your_actual_email@example.com" method="post" enctype="text/plain" class="space-y-6">
+                    <input type="text" name="name" placeholder="Insert name" class="contact-input w-full" aria-label="Your Name" required>
                     
-                    <input type="email" placeholder="Insert gmail" class="contact-input w-full" aria-label="Your Email" required>
+                    <input type="email" name="email" placeholder="Insert gmail" class="contact-input w-full" aria-label="Your Email" required>
                     
-                    <textarea placeholder="Insert Message" rows="6" class="contact-input w-full resize-none" aria-label="Your Message" required></textarea>
+                    <textarea name="message" placeholder="Insert Message" rows="6" class="contact-input w-full resize-none" aria-label="Your Message" required></textarea>
                     
                     <button type="submit" class="w-full py-4 bg-[--accent-cyan] text-black font-bold text-lg rounded-xl shadow-lg hover:bg-[--darker-secondary-blue] hover:text-white transition duration-300 transform hover:scale-[1.01]">
                         Send Message
                     </button>
-                     
-                    <div id="statusMessage" class="mt-4 p-3 rounded-xl hidden text-sm font-medium"></div>
                 </form>
+
+               
+                <div class="mt-10 pt-6 border-t border-gray-600 space-y-4 text-left text-white">
+                    <h3 class="text-2xl font-semibold mb-4 text-white text-center">Or Connect Directly</h3>
+                    
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="facebook" class="w-7 h-7 text-[--accent-cyan]"></i>
+                        <p class="text-lg">Facebook: 
+                            <a href="https://www.facebook.com/ken.piamonte.315" class="text-[--accent-cyan] hover:text-white transition duration-150 underline">https://www.facebook.com/ken.piamonte.315</a>
+                        </p>
+                    </div>
+
+                    
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="instagram" class="w-7 h-7 text-[--accent-cyan]"></i>
+                        <p class="text-lg">Instagram: 
+                            <a href="https://www.instagram.com/carrotdevourer2325?igsh=MTdvdWxoeHR4amJidg==" class="text-[--accent-cyan] hover:text-white transition duration-150 underline">https://www.instagram.com/carrotdevourer2325</a>
+                        </p>
+                    </div>
+
+                  
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="phone" class="w-7 h-7 text-[--accent-cyan]"></i>
+                        <p class="text-lg">Contact Number: 
+                            <span class="text-[--accent-cyan]">09993597619</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        ```
                 <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();
